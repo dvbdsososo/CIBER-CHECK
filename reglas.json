@@ -1,0 +1,59 @@
+
+{
+  "https": {
+    "titulo": "Tu sitio no usa una conexion segura",
+    "gravedad": "alta",
+    "puntos": 25,
+    "explicacion": "Es como enviar una carta sin sobre. La informacion que envias podria quedar expuesta.",
+    "sugerencia": "Activa HTTPS para proteger la informacion que se envia entre el visitante y el sitio."
+  },
+  "redireccion_https": {
+    "titulo": "Tu sitio no dirige automaticamente a la conexion segura",
+    "gravedad": "media",
+    "puntos": 10,
+    "explicacion": "Es como entrar por una puerta sin candado cuando existe una puerta segura.",
+    "sugerencia": "Configura el sitio para que las visitas por HTTP se redirijan a HTTPS."
+  },
+  "certificado_valido": {
+    "titulo": "El certificado de seguridad no es valido",
+    "gravedad": "alta",
+    "puntos": 20,
+    "explicacion": "El certificado es como la credencial de un sitio. Si tiene problemas, puede ser dificil comprobar su identidad.",
+    "sugerencia": "Revisa el certificado y renuevalo o instalalo correctamente."
+  },
+  "header_csp": {
+    "titulo": "Falta una regla para controlar el contenido",
+    "gravedad": "media",
+    "puntos": 10,
+    "explicacion": "Es como una lista de invitados que indica de donde puede entrar contenido a la pagina.",
+    "sugerencia": "Configura Content-Security-Policy con las fuentes de contenido que el sitio necesita."
+  },
+  "header_hsts": {
+    "titulo": "El sitio no indica que siempre se use una conexion segura",
+    "gravedad": "media",
+    "puntos": 10,
+    "explicacion": "Es como un recordatorio para que el navegador siempre entre por la puerta segura.",
+    "sugerencia": "Configura Strict-Transport-Security despues de comprobar que HTTPS funciona correctamente."
+  },
+  "header_xframe": {
+    "titulo": "Falta una proteccion contra marcos engañosos",
+    "gravedad": "baja",
+    "puntos": 5,
+    "explicacion": "Otra pagina podria intentar mostrar tu sitio dentro de un marco para engañar a los visitantes.",
+    "sugerencia": "Configura X-Frame-Options de acuerdo con la forma en que debe mostrarse tu sitio."
+  },
+  "header_xcontent": {
+    "titulo": "Falta una regla para interpretar los archivos",
+    "gravedad": "baja",
+    "puntos": 5,
+    "explicacion": "Es como pedirle al navegador que no adivine que tipo de archivo esta recibiendo.",
+    "sugerencia": "Configura X-Content-Type-Options con el valor nosniff."
+  },
+  "info_servidor": {
+    "titulo": "Tu sitio revela informacion del servidor",
+    "gravedad": "baja",
+    "puntos": 5,
+    "explicacion": "Es como mostrar en la puerta la marca y el modelo de tu cerradura. Esa informacion puede dar pistas a un atacante.",
+    "sugerencia": "Revisa la configuracion del servidor para reducir la informacion de version que muestra."
+  }
+}

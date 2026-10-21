@@ -1,0 +1,58 @@
+{
+  "https": {
+    "titulo": "Tu sitio no usa una conexión segura",
+    "gravedad": "alta",
+    "puntos": 25,
+    "explicacion": "Es como mandar una carta sin sobre: cualquiera podría leer lo que tus visitantes escriben en tu página.",
+    "sugerencia": "Entra donde administras tu página y busca «SSL» o «Certificado». Activa el gratuito (se llama Let's Encrypt). Si no lo encuentras, pídeselo a la empresa donde tienes tu página."
+  },
+  "redireccion_https": {
+    "titulo": "Tu sitio no manda a las visitas a la conexión segura",
+    "gravedad": "media",
+    "puntos": 10,
+    "explicacion": "Es como tener dos puertas, una con candado y otra sin candado, y dejar que cada visita elija cualquiera de las dos.",
+    "sugerencia": "Entra donde administras tu página y busca «Forzar HTTPS». Actívalo. Si no lo encuentras, pídeselo a la empresa donde tienes tu página."
+  },
+  "certificado_valido": {
+    "titulo": "El certificado de seguridad de tu sitio tiene un problema",
+    "gravedad": "alta",
+    "puntos": 20,
+    "explicacion": "El certificado es como la credencial de tu página. Si ya se venció, aparece un aviso rojo y los visitantes se asustan.",
+    "sugerencia": "Entra donde administras tu página, busca «SSL» y renueva el certificado. También puedes instalar uno gratis (Let's Encrypt)."
+  },
+  "header_csp": {
+    "titulo": "Falta una regla para controlar el contenido",
+    "gravedad": "media",
+    "puntos": 10,
+    "explicacion": "Es como una lista de invitados: solo deja entrar a tu página lo que tú permitiste.",
+    "sugerencia": "Pídele a la empresa donde tienes tu página: «Quiero activar Content-Security-Policy». Si se hace mal, la página puede fallar, así que mejor que lo haga alguien con experiencia."
+  },
+  "header_hsts": {
+    "titulo": "Tu sitio no pide usar siempre la conexión segura",
+    "gravedad": "media",
+    "puntos": 10,
+    "explicacion": "Es como una nota que le dice al visitante: «con esta página, entra siempre por la puerta segura».",
+    "sugerencia": "Primero activa la conexión segura (el candadito). Después pídele a la empresa donde tienes tu página: «Quiero activar HSTS»."
+  },
+  "header_xframe": {
+    "titulo": "Falta una protección contra marcos engañosos",
+    "gravedad": "baja",
+    "puntos": 5,
+    "explicacion": "Es como si alguien pusiera un vidrio transparente sobre tu página, con botones falsos pintados encima, para que una persona haga clic sin darse cuenta.",
+    "sugerencia": "Pídele a la empresa donde tienes tu página: «Quiero activar X-Frame-Options con el valor SAMEORIGIN»."
+  },
+  "header_xcontent": {
+    "titulo": "Falta una regla para reconocer los archivos",
+    "gravedad": "baja",
+    "puntos": 5,
+    "explicacion": "Es como recibir un paquete sin etiqueta y abrirlo sin saber qué trae. Alguien podría esconder algo peligroso dentro de un archivo que parece normal.",
+    "sugerencia": "Pídele a la empresa donde tienes tu página: «Quiero activar X-Content-Type-Options con el valor nosniff»."
+  },
+  "info_servidor": {
+    "titulo": "Tu sitio muestra información de más",
+    "gravedad": "baja",
+    "puntos": 5,
+    "explicacion": "Es como colgar en la puerta la marca y el modelo de tu cerradura: un ladrón sabría cómo abrirla.",
+    "sugerencia": "Pídele a la empresa donde tienes tu página: «Quiero ocultar la versión del servidor». Es un cambio rápido."
+  }
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CiberCheck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+  <header class="caja">
+    <nav class="nav entra">
+      {# Cuando tengas el logo: <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo"> #}
+      <div class="logo">logo</div>
+      <a class="pastilla" href="#analisis">Análisis</a>
+      <a class="pastilla" href="#que-es">Qué es</a>
+      <a class="pastilla" href="#como-funciona">Cómo funciona</a>
+    </nav>
+  </header>
+
+  <main class="caja">
+    <section id="analisis" class="portada">
+      <h1 class="titulo entra" style="--d:.2s">CIBERCHECK</h1>
+      <p class="tres entra" style="--d:.55s"><span>ANALIZA</span><span>TU PÁGINA</span><span>SUGIERE</span></p>
+
+      <div class="tarjeta entra" style="--d:.9s">
+        <form id="formulario" action="/analizar" method="post">
+          <label for="url">INGRESA TU URL</label>
+          <input id="url" type="text" name="url" value="{{ url or '' }}" placeholder="ej. www.tusitio.com" autocomplete="off" required>
+          <button id="boton" class="boton" type="submit">Analizar</button>
+          <p id="espera" class="espera" hidden><span class="rueda"></span>Estamos revisando tu página. Puede tardar unos segundos.</p>
+        </form>
+        {% if error %}<p class="error" role="alert">{{ error }}</p>{% endif %}
+      </div>
+    </section>
+
+    <section id="que-es" class="seccion">
+      <h2 class="subtitulo revela">QUÉ ES</h2>
+      <div class="bloque revela">
+        <p>CiberCheck es una herramienta gratuita que revisa qué tan protegida está una página web. Escribes su dirección y, en unos segundos, te damos una calificación de la A a la F con explicaciones sencillas y consejos para mejorarla.</p>
+        <p>Piensa en tu página como una casa: tiene puertas, ventanas y cerraduras. CiberCheck es como un amigo que da una vuelta por afuera y revisa si dejaste algo abierto. No entra, no rompe nada y no cambia nada. Solo mira lo que cualquiera puede ver desde la calle.</p>
+        <p>No necesitas saber de computadoras. Todo está explicado con palabras normales y con ejemplos de la vida diaria.</p>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="seccion">
+      <h2 class="subtitulo derecha revela">CÓMO FUNCIONA</h2>
+      <div class="bloque revela">
+        <ol class="pasos">
+          <li><b>1</b><div><h3>Escribes la dirección</h3><p>Pon el link de tu página en el cuadro, por ejemplo www.tusitio.com. Si no escribes http:// ni https://, nosotros lo agregamos por ti.</p></div></li>
+          <li><b>2</b><div><h3>CiberCheck visita tu página</h3><p>Entra como lo haría cualquier visitante y revisa 8 puntos de seguridad. No modifica ni daña nada, solo observa. Puede tardar unos segundos.</p></div></li>
+          <li><b>3</b><div><h3>Calculamos tu calificación</h3><p>Empiezas con 100 puntos. Cada protección que falta resta algunos: las más peligrosas restan más y las pequeñas restan menos. Con lo que queda sale tu letra, de la A (excelente) a la F (muy mejorable).</p></div></li>
+          <li><b>4</b><div><h3>Te explicamos qué hacer</h3><p>Por cada problema te contamos qué significa con un ejemplo de la vida diaria y qué pasos seguir. Si no sabes cómo hacerlo, te decimos qué pedirle a la empresa donde tienes tu página.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="bloque fuerte revela">
+        <h2 class="subtitulo chico">QUÉ REVISAMOS</h2>
+        <ul class="revisamos">
+          <li><h3>Conexión segura</h3><p>Que lo que escriben tus visitantes viaje en un sobre cerrado y no en una postal que cualquiera puede leer.</p></li>
+          <li><h3>Desvío a la conexión segura</h3><p>Que si alguien entra por la puerta sin candado, lo mandemos a la puerta que sí lo tiene.</p></li>
+          <li><h3>Certificado de seguridad</h3><p>Que la credencial de tu página esté vigente y no vencida.</p></li>
+          <li><h3>Contenido permitido</h3><p>Que tu página solo cargue lo que tú autorizaste, como una lista de invitados.</p></li>
+          <li><h3>Recordatorio de seguridad</h3><p>Que el navegador recuerde entrar siempre por la puerta segura.</p></li>
+          <li><h3>Marcos engañosos</h3><p>Que nadie pueda tapar tu página con botones falsos para engañar a tus visitantes.</p></li>
+          <li><h3>Reconocimiento de archivos</h3><p>Que el navegador no abra archivos a ciegas, como un paquete sin etiqueta.</p></li>
+          <li><h3>Información de más</h3><p>Que tu página no presuma qué marca de cerradura usa, porque eso le da pistas a un ladrón.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <h2 class="subtitulo revela">ESCALA DE CALIFICACIÓN</h2>
+      <div class="escala">
+        <div class="izq">
+          {# Aquí van tus imágenes: <img src="{{ url_for('static', filename='medidor.png') }}" alt="Medidor"> #}
+          <div class="cuadro-img revela">imagen</div>
+          <div class="cuadro-img revela">imagen</div>
+        </div>
+        <div class="der">
+          <div class="nivel revela"><h3>A · 90 a 100</h3><p>Excelente. Tu página está muy bien protegida y solo faltan detalles.</p></div>
+          <div class="nivel revela"><h3>B y C · 70 a 89</h3><p>Bien, pero mejorable. Hay cosas importantes que arreglar con calma.</p></div>
+          <div class="nivel revela"><h3>D · 60 a 69</h3><p>Regular. Faltan protecciones básicas y conviene arreglarlas pronto.</p></div>
+          <div class="nivel revela"><h3>F · menos de 60</h3><p>Riesgo alto. Tu página está muy expuesta; empieza por los problemas marcados como altos.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="caja pie-grid">
+      <p class="aviso-grande">RECUERDA USAR TU PÁGINA WEB Y NO LA DE OTRA PERSONA</p>
+      <p>Trabajo de prototipos<br>Elaborado por:<br>Flores Díaz Alexis David<br>Jesús Enrique Castillo Rico<br>Rodríguez Galindo Ian Justin</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='animaciones.js') }}" defer></script>
+</body>
+</html>

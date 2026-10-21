@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resultado | CiberCheck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+  <header class="caja">
+    <nav class="nav entra">
+      {# Cuando tengas el logo: <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo"> #}
+      <div class="logo">logo</div>
+      <a class="pastilla" href="/">Inicio</a>
+      <a class="pastilla" href="/#que-es">Qué es</a>
+      <a class="pastilla" href="/#como-funciona">Cómo funciona</a>
+    </nav>
+  </header>
+
+  <main class="caja resultado">
+    <h1 class="titulo mediano entra" style="--d:.2s">RESULTADO</h1>
+    <p class="sitio entra" style="--d:.45s">Sitio analizado: <strong>{{ url }}</strong></p>
+
+    {% if r.calificacion %}
+    <section class="entra" style="--d:.7s">
+      <div class="nota nota-{{ r.calificacion }}">{{ r.calificacion }}</div>
+      <p class="puntos"><span data-contar="{{ r.puntaje }}">{{ r.puntaje }}</span> / 100</p>
+    </section>
+    {% else %}
+    <div class="bloque entra" style="--d:.7s">
+      <h2 class="subtitulo chico">NO PUDIMOS ANALIZAR ESTE SITIO</h2>
+      <p>No logramos revisar ninguno de los puntos de seguridad, así que no podemos darte una calificación. Revisa que el link esté bien escrito y que la página esté funcionando, y vuelve a intentarlo.</p>
+    </div>
+    {% endif %}
+
+    {% if r.problemas %}
+    <h2 class="subtitulo revela">QUÉ PUEDES MEJORAR</h2>
+    {% for p in r.problemas %}
+    <article class="problema revela">
+      <span class="gravedad gravedad-{{ p.gravedad }}">Gravedad {{ p.gravedad }}</span>
+      <h3>{{ p.titulo }}</h3>
+      <p>{{ p.explicacion }}</p>
+      <p><strong>Qué hacer:</strong> {{ p.sugerencia }}</p>
+    </article>
+    {% endfor %}
+    {% elif r.calificacion %}
+    <div class="bloque revela">
+      <h2 class="subtitulo chico">¡EXCELENTE!</h2>
+      <p>No encontramos problemas en los puntos que revisamos. Sigue cuidando tu página y vuelve a analizarla cada cierto tiempo.</p>
+    </div>
+    {% endif %}
+
+    {% if r.no_verificados and r.calificacion %}
+    <div class="bloque revela">
+      <p><strong>Ojo:</strong> hubo {{ r.no_verificados|length }} revisión(es) que no se pudieron hacer y no cuentan en tu calificación: {{ r.no_verificados|join(', ') }}.</p>
+    </div>
+    {% endif %}
+
+    <p class="revela"><a href="/" class="boton enlace">Analizar otro sitio</a></p>
+  </main>
+
+  <footer class="pie">
+    <div class="caja pie-grid">
+      <p class="aviso-grande">RECUERDA USAR TU PÁGINA WEB Y NO LA DE OTRA PERSONA</p>
+      <p>Trabajo de prototipos<br>Elaborado por:<br>Flores Díaz Alexis David<br>Jesús Enrique Castillo Rico<br>Rodríguez Galindo Ian Justin</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='animaciones.js') }}" defer></script>
+</body>
+</html>
